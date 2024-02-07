@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc Mừng Năm Mới</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url("anhtet2.png");
+      background-size: cover;
+      background-position: center;
+      font-family: 'Arial', sans-serif;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      color: rgb(249, 247, 247);
+    }
+
+    .chuto {
+      font-size: 50px;
+      color: rgb(249, 247, 247);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      border: 3px solid rgb(249, 181, 181);
+      border-radius: 10px;
+      background-color: rgb(244, 172, 172);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 8px 20px;
+      margin: 10px;
+      cursor: pointer;
+      background-color: #ff0000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #cc0000;
+    }
+
+    #buttonA, #buttonB {
+      width: 100px;
+      position: absolute;
+    }
+
+    #buttonA img, #buttonB img {
+      width: 16px;
+      margin-right: 6px;
+    }
+
+    .transparent-image {
+      position: absolute;
+      width: 10%;
+      opacity: 0.5;
+    }
+
+    #topLeft, #topRight {
+      position: absolute;
+      width: 400px; /* Điều chỉnh kích thước của ảnh */
+    }
+
+    #topLeft {
+      top: 10px;
+      left: 10px;
+    }
+
+    #topRight {
+      top: 10px;
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <audio id="myAudio" autoplay>
+    <source src="y2mate.com - ABBA  Happy New Year.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="container">
+    <img id="topLeft" src="pngegg (1).png" alt="Top Left Image">
+    <img id="topRight" src="pngegg.png" alt="Top Right Image">
+
+    <p class="chuto">Lì xì cho bạn nhé!</p>
+    <button id="buttonA" onclick="moveButton()">
+      <img src="hodao1.png" alt="Icon hoa đào hoa mai">Không
+    </button>
+    <button id="buttonB" onclick="showAccountNumber()">  
+      <img src="lixi.png" alt="Icon hoa đào hoa mai">Lì xì
+    </button>
+
+
+  </div>
+
+  <script>
+    var audio = document.getElementById("myAudio");
+    audio.hidden = true;
+
+    document.addEventListener("click", function() {
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+
+    let oldPosition = { left: 0, top: 0 };
+    
+    function moveButton() {
+      const buttonA = document.getElementById("buttonA");
+      const buttonB = document.getElementById("buttonB");
+
+      oldPosition.left = buttonA.style.left;
+      oldPosition.top = buttonA.style.top;
+
+      const newLeftA = Math.random() * (window.innerWidth - buttonA.clientWidth);
+      const newTopA = Math.random() * (window.innerHeight - buttonA.clientHeight);
+
+      const newLeftB = parseInt(oldPosition.left);
+      const newTopB = parseInt(oldPosition.top);
+
+      buttonA.style.left = newLeftA + "px";
+      buttonA.style.top = newTopA + "px";
+
+      buttonB.style.left = newLeftB + "px";
+      buttonB.style.top = newTopB + "px";
+    }
+
+    function showAccountNumber() {
+      window.location.href = "https://hoangtrungdd.github.io/indexlast/";
+    }
+
+    window.onload = moveButton;
+  </script>
+</body>
+</html>
